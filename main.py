@@ -23,6 +23,10 @@ class BankAccount():
 
         self.bal += amount
 
+    def transfer_funds(self, otherAcc, amount):
+        self.bal -= amount
+        otherAcc.bal += amount
+
     def show_balance(self):
 
         return f"Current Balance: ${self.bal:.2f}"
@@ -68,4 +72,44 @@ print()
 #FINAL SHOWING
 
 print(bank1.get_info())
+
+print()
+
+# transferring funds
+
+person2 = person.Person("Kamea", "Helmstetter", 16, False, 987654321)
+person3 = person.Person("Lucas", "Brinks", 17, True, 678912345)
+person4 = person.Person("Joshua", "Phillips", 18, True, 345126897)
+bank2 = BankAccount(person2, 55642603, 2000)
+bank3 = BankAccount(person3, 80085101, 5000000)
+bank4 = BankAccount(person4, 10180085, 1.96)
+
+print(bank2.get_info())
+
+print()
+
+print("Kamea is transferring $20 to Thayer\n")
+
+
+bank2.transfer_funds(bank1, 20)
+
+print(bank1.get_info())
+print()
+print(bank2.get_info())
+print()
+# Lucas gives Josh monz
+print(bank3.get_info())
+print()
+print(bank4.get_info())
+print()
+
+print("Lucas gives Josh $5000\n")
+
+bank3.transfer_funds(bank4, 5000)
+print(bank3.get_info())
+print()
+print(bank4.get_info())
+
+
+
 
